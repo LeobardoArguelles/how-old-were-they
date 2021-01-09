@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+How old were they?
+{% endblock %}
+
+{% block h1 %}
+How old where they when...?
+{% endblock %}
+
+{% block content %}
+<input class="c-checkbox" type="checkbox" id="checkbox">
+<div class="c-formContainer">
+  <form class="c-form" action="{{ url_for('index') }}">
+    <input class="c-form__input" placeholder="" type="text" name="movie" required>
+    <label class="c-form__buttonLabel" for="checkbox">
+      <button class="c-form__button" type="button">Search</button>
+    </label>
+    <label class="c-form__toggle" for="checkbox" data-title="Movie"></label>
+  </form>
+</div>
+{% endblock %}

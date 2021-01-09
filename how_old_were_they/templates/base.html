@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+  <head>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" media="screen" href="http://fontlibrary.org/face/roboto-condensed" type="text/css"/> 
+  </head>
+  <body>
+    {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+    {% endfor %}
+    <div class="banner">
+      <h1>{% block h1 %}{% endblock %}</h1>
+    </div>
+    {% block content %}{% endblock %}
+  </body>
+</html>

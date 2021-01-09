@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+How old were they?
+{% endblock %}
+
+{% block h1 %}
+What movie are you watching?
+{% endblock %}
+
+{% block content %}
+<div class="container flex">
+  {% for person in persons %}
+  <div class="container flex person">
+    <img src="{{ person.picture }}" alt="{{ person.name }} photo.">
+    Name: {{ person.name }}
+    Age: {{person.age}}
+    Age when movie aired: {{ person.age_in_movie }}
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
