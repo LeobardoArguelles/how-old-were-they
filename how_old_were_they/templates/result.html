@@ -5,17 +5,19 @@ How old were they?
 {% endblock %}
 
 {% block h1 %}
-What movie are you watching?
+{{ title }}
 {% endblock %}
 
 {% block content %}
 <div class="container flex">
   {% for person in persons %}
   <div class="container flex person">
-    <img src="{{ person.picture }}" alt="{{ person.name }} photo.">
-    Name: {{ person.name }}
-    Age: {{person.age}}
-    Age when movie aired: {{ person.age_in_movie }}
+    <img width="180px" height="270px" src="{{ person.picture }}" alt="{{ person.name }} photo.">
+    <div class="person-data">
+      {{ person.name }} <br>
+      Age right now: {{person.age}} <br>
+      Age in movie: {{ person.age_in_movie }}
+    </div>
   </div>
   {% endfor %}
 </div>

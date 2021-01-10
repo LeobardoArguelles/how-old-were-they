@@ -8,7 +8,9 @@ bp = Blueprint('main', __name__)
 @bp.route('/', methods=['POST','GET'])
 def index():
   if request.method == 'POST':
-    persons = searcher.search(request.form['movie'])
-    return render_template('result.html', persons=list(persons.values())[:3])
+    media_type = request.form['watching']
+    title = request.form['movie']
+    persons = searcher.search(title)
+    return render_template('result.html', persons=list(persons.values())[:3], title=title)
   return render_template('index.html')
 

@@ -5,18 +5,33 @@ How old were they?
 {% endblock %}
 
 {% block h1 %}
-How old where they when...?
+What are you watching?
 {% endblock %}
 
 {% block content %}
-<input class="c-checkbox" type="checkbox" id="checkbox">
-<div class="c-formContainer">
-  <form class="c-form" action="{{ url_for('index') }}">
-    <input class="c-form__input" placeholder="" type="text" name="movie" required>
-    <label class="c-form__buttonLabel" for="checkbox">
-      <button class="c-form__button" type="button">Search</button>
-    </label>
-    <label class="c-form__toggle" for="checkbox" data-title="Movie"></label>
-  </form>
+<form action="{{ url_for('index') }}" method="POST" id="form-name">
+<div class="flex container" id="radio-group">
+    <div class="container radio-item">
+      <input type="radio" id="movie" name="watching" value="movie">
+      <label for="movie">  Movie</label>
+    </div>
+    <div class="container radio-item">
+      <input type="radio" id="serie" name="watching" value="serie">
+      <label for="serie">  Serie</label>
+    </div>
+  </div>
+<div class="flex container">
+    <input type="text" class="search-bar" name="movie" pattern=".*\S.*">
+    <button class="search-btn" type="submit" >
+      <span>Search</span>
+    </button>
 </div>
+</form>
+{% endblock %}
+
+{% block script %}
+<!-- submitForms = function(){
+  document.getElementById("form-name").submit();
+  document.getElementById("form-type").submit();
+} -->
 {% endblock %}
