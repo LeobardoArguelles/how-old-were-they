@@ -113,5 +113,3 @@ wikipedia==1.4.0
 wrapt==1.12.1
 WTForms==2.3.3
 xcffib==0.8.1
-xkit==0.0.0
-zope.interface==4.7.1
