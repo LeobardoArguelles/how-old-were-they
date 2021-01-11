@@ -1,1 +1,1 @@
-web: gunicorn how_old_were_they:__init__.py
+web: gunicorn how_old_were_they:create_app()
