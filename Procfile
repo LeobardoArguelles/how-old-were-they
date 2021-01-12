@@ -1,1 +1,1 @@
-web: gunicorn main:app
+web: gunicorn how_old_were_they:app
