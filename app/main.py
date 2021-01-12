@@ -11,6 +11,6 @@ def index():
     media_type = request.form['watching']
     title = request.form['movie']
     persons = searcher.search(title)
-    return render_template('result.html', persons=list(persons.values())[:3], title=title)
+    return render_template('result.html', persons=list(persons.values())[:10], title=title)
   return render_template('index.html')
 
