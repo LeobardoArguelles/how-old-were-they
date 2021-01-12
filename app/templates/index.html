@@ -4,27 +4,28 @@
 How old were they?
 {% endblock %}
 
-{% block h1 %}
-What are you watching?
-{% endblock %}
-
 {% block content %}
-<form action="{{ url_for('index') }}" method="POST" id="form-name">
-<div class="flex container" id="radio-group">
-    <div class="container radio-item">
-      <input type="radio" id="movie" name="watching" value="movie">
-      <label for="movie">  Movie</label>
+<div class="main-container">
+  <div class="banner box">
+    <h1>What are you watching?</h1>
+    <form action="{{ url_for('index') }}" method="POST" id="form-name">
+    <div class="flex container" id="radio-group">
+        <div class="container radio-item">
+          <input type="radio" id="movie" name="watching" value="movie">
+          <label for="movie">  Movie</label>
+        </div>
+        <div class="container radio-item">
+          <input type="radio" id="serie" name="watching" value="serie">
+          <label for="serie">  Serie</label>
+        </div>
+      </div>
+    <div class="flex container">
+        <input type="text" class="search-bar" name="movie" pattern=".*\S.*">
+        <button class="search-btn" type="submit" >
+          <span>Search</span>
+        </button>
     </div>
-    <div class="container radio-item">
-      <input type="radio" id="serie" name="watching" value="serie">
-      <label for="serie">  Serie</label>
-    </div>
+    </form>
   </div>
-<div class="flex container">
-    <input type="text" class="search-bar" name="movie" pattern=".*\S.*">
-    <button class="search-btn" type="submit" >
-      <span>Search</span>
-    </button>
 </div>
-</form>
 {% endblock %}

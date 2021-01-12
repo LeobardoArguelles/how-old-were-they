@@ -4,21 +4,20 @@
 How old were they?
 {% endblock %}
 
-{% block h1 %}
-{{ title }}
-{% endblock %}
-
 {% block content %}
-<div class="container flex">
-  {% for person in persons %}
-  <div class="container flex person">
-    <img width="180px" height="270px" src="{{ person.picture }}" alt="{{ person.name }} photo.">
-    <div class="person-data">
-      {{ person.name }} <br>
-      Age right now: {{person.age}} <br>
-      Age in movie: {{ person.age_in_movie }}
+<div class="banner box">
+  <h1>{{ title }}</h1>
+  <div class="container flex">
+    {% for person in persons %}
+    <div class="container flex person">
+      <img width="180px" height="270px" src="{{ person.picture }}" alt="{{ person.name }} photo.">
+      <div class="person-data">
+        {{ person.name }} <br>
+        Age right now: {{person.age}} <br>
+        Age in movie: {{ person.age_in_movie }}
+      </div>
     </div>
+    {% endfor %}
   </div>
-  {% endfor %}
 </div>
 {% endblock %}

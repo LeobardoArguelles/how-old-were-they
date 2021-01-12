@@ -10,11 +10,6 @@
     {% for message in get_flashed_messages() %}
     <div class="flash">{{ message }}</div>
     {% endfor %}
-    <div class="main-container">
-      <div class="banner box">
-        <h1>{% block h1 %}{% endblock %}</h1>
-      {% block content %}{% endblock %}
-      </div>
-    </div>
+    {% block content %}{% endblock %}
   </body>
 </html>
