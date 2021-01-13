@@ -10,7 +10,7 @@ def index():
   if request.method == 'POST':
     media_type = request.form['watching']
     title = request.form['movie']
-    persons = searcher.search(title)
-    return render_template('result.html', persons=list(persons.values())[:10], title=title)
+    persons, real_title = searcher.search(title, media_type)
+    return render_template('result.html', persons=list(persons.values())[:10], title=real_title, is_movie=True if media_type == "movie" else False)
   return render_template('index.html')
 

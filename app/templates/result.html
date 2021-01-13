@@ -14,7 +14,11 @@ How old were they?
       <div class="person-data">
         {{ person.name }} <br>
         Age right now: {{person.age}} <br>
+        {% if is_movie %}
         Age in movie: {{ person.age_in_movie }}
+        {% else %}
+        Age Season 1: {{ person.age_in_movie }}
+        {% endif %}
       </div>
     </div>
     {% endfor %}

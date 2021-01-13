@@ -6,9 +6,14 @@ YEAR = NOW.year
 MONTH = NOW.month
 DAY = NOW.day
 
-def search(movie):
+def search(movie, media):
   API_KEY = config('KEY')
-  ROOT = 'https://api.themoviedb.org/3/search/movie?api_key='
+  if media == 'movie':
+    ROOT = 'https://api.themoviedb.org/3/search/movie?api_key='
+    is_movie = True
+  else: 
+    ROOT = 'https://api.themoviedb.org/3/search/tv?api_key='
+    is_movie = False
   IMAGE_ROOT = 'https://image.tmdb.org/t/p/'
   LANGUAGE = '&language=en-US'
   PROFILE_RESOLUTION = 'w185'
@@ -19,17 +24,26 @@ def search(movie):
   query = ROOT + API_KEY + LANGUAGE + '&query=' + movie.replace(' ', '%20') + '&page=1'
 
   # Get movie data
-  movie_data = requests.get(query).json()['results'][0]
-  movie_id = str(movie_data['id'])
-  release_date = {
-    'year':int(movie_data['release_date'].split('-')[0]),
-    'month':int(movie_data['release_date'].split('-')[1]),
-    'day':int(movie_data['release_date'].split('-')[2])}
-  movie_poster = IMAGE_ROOT + POSTER_RESOLUTION + movie_data['poster_path']
+  data = requests.get(query).json()['results'][0]
+  my_id = str(data['id'])
+  real_title = data['name']
+  if is_movie:
+    release_date = {
+      'year':int(data['release_date'].split('-')[0]),
+      'month':int(data['release_date'].split('-')[1]),
+      'day':int(data['release_date'].split('-')[2])}
+  else:
+    release_date = {
+      'year':int(data['first_air_date'].split('-')[0]),
+      'month':int(data['first_air_date'].split('-')[1]),
+      'day':int(data['first_air_date'].split('-')[2])}
+  movie_poster = IMAGE_ROOT + POSTER_RESOLUTION + data['poster_path']
 
   # Get movie cast
-  query = 'https://api.themoviedb.org/3/movie/' + movie_id + '/credits?api_key=' + API_KEY + LANGUAGE
-  cast = requests.get(query).json()['cast']
+  'https://api.themoviedb.org/3/tv/70523/credits?api_key=f290a6cd7f26e869cf63e412e5b1ec91&language=en-US'
+  query = 'https://api.themoviedb.org/3/' + ('movie/' if is_movie else 'tv/') + my_id + '/credits?api_key=' + API_KEY + LANGUAGE
+  data = requests.get(query).json()
+  cast = data['cast']
 
   # Get relevant data for each actor
   characters = {}
@@ -47,11 +61,11 @@ def search(movie):
       person['id'],
       IMAGE_ROOT + PROFILE_RESOLUTION + person_data['profile_path']
     )
-  
-  return characters
 
   # for character, actor in characters.items():
   #   print(f"{character} was played by {actor.name} at the age of {calculate_age(actor.birthday, release_date)}.")
+
+  return (characters, real_title)
   
 def tabulate(characters):
   id_width = 10
@@ -97,4 +111,4 @@ class Person():
     return "{}: {}. Age: {}".format(self.id, self.name, self.age)
 
 if __name__ == "__main__":
-    main()
+    search('How I Met Your Mother', 'serie')

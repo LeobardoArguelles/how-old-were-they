@@ -41,14 +41,15 @@
 }
 
 .person-data {
-  width: 180px;
+  width: auto;
   margin-top: 8px;
-  font-size: calc(14px + 0.5vw);
+  font-size: calc(14px + 0.35vw);
 }
 
 .search-bar {
   width: 30vw;
   min-width: 150px;  
+  font-size: x-large;
 }
 
 .radio-item {
