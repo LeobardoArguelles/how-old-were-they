@@ -26,7 +26,7 @@ def search(movie, media):
   # Get movie data
   data = requests.get(query).json()['results'][0]
   my_id = str(data['id'])
-  real_title = data['name']
+  real_title = data ['original_title'] if is_movie else data['name']
   if is_movie:
     release_date = {
       'year':int(data['release_date'].split('-')[0]),
