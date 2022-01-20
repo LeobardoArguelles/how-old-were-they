@@ -29,8 +29,9 @@ def search(movie, media):
     query = ROOT + API_KEY + LANGUAGE + '&query=' + movie.replace(' ', '%20') + '&page=1'
 
     # Get movie data
-    data = requests.get(query).json()['results'][0]
+    data = requests.get(query).json()['results']
     print(data)
+    data = data[0]
     my_id = str(data['id'])
     real_title = data ['original_title'] if is_movie else data['name']
     if is_movie:
