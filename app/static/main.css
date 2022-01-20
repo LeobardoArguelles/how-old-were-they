@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .box {
+    background-color: rgba(0, 0, 0, 0.85);
+    width: 80vw;
+    margin: auto;
+    margin-top: 10vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-items: center;
+  }
+
+  .banner {
+    color: white;
+    font-family: 'RobotoCondensedRegular';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 3vw;
+    text-align: center;
+    margin-top: 5%;
+  }
+
+  .main-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+  }
+
+  .container{
+    margin: 10px auto;
+  }
+
+  .person-data {
+    width: auto;
+    margin-top: 8px;
+    font-size: calc(14px + 0.35vw);
+  }
+
+  .search-bar {
+    width: 30vw;
+    min-width: 150px;
+    font-size: x-large;
+  }
+
+  .radio-item {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+  }
+
+
+  @media only screen and (max-width: 740px) {
+    body {
+      background-image: url('hero-image-vertical.jpg');
+    }
+    #radio-group {
+      font-size: 6vw;
+    }
+    .flex {
+      display: flex;
+      flex-flow: column;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      width: 80%;
+      margin: auto;
+      margin-bottom: 10px;
+    }
+    .person {
+      flex-flow: column;
+      margin: 5px;
+      align-items: center;
+      width: auto;
+      min-width: 180px;
+      width: auto;
+    }
+    .search-btn {
+      margin-top: 5px;
+      width: 70px;
+    }
+  }
+
+  @media only screen and (min-width: 740px){
+    body {
+      background-image: url('hero-image.jpg');
+    }
+    #radio-group {
+      width: 50%;
+      font-size: 3vw;
+    }
+    .flex {
+      display: flex;
+      flex-flow: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 80%;
+      margin: auto;
+      margin-bottom: 10px;
+    }
+    .person {
+      flex-flow: column;
+      margin: 5px;
+      align-items: center;
+      width: auto;
+      min-width: 180px;
+      width: auto;
+      text-align: start;
+    }
+  }
+}

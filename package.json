@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "build": "npx tailwindcss -i ./app/static/main.css -o ./app/static/style.css",
+    "dev": "cross-env TAILWIND_MODE=watch NODE_ENV=development npx tailwindcss ./app/static/main.css -o ./app/static/style.css -w"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.2",
+    "postcss": "^8.4.5",
+    "postcss-cli": "^9.1.0",
+    "tailwindcss": "^3.0.15"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3"
+  }
+}
