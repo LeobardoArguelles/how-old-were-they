@@ -12,9 +12,13 @@ PROFILE_RESOLUTION = 'w185'
 POSTER_RESOLUTION = 'w185'
 
 
-def search(movie, media):
+def search(target, media):
     """
     Busca la película recibida.
+    :param target: Película/serie a bucar
+    :param media: Tipo de media: "movie" o "serie"
+    :return: Tuple with a list of characters, and the official title of the
+             target, or (None, None) if target was not found
     """
     API_KEY = config('KEY')
     if media == 'movie':
@@ -26,31 +30,35 @@ def search(movie, media):
 
     # Create query
     # movie = input("What movie are you watching?\n")
-    query = ROOT + API_KEY + LANGUAGE + '&query=' + movie.replace(' ', '%20') + '&page=1'
+    query = ROOT + API_KEY + LANGUAGE + '&query=' + target.replace(' ', '%20')
+    query += '&page=1'
 
     # Get movie data
     data = requests.get(query).json()['results']
-    print(data)
+
+    if not data:
+        return (None, None)
     data = data[0]
     my_id = str(data['id'])
     real_title = data ['original_title'] if is_movie else data['name']
     if is_movie:
         release_date = {
-          'year':int(data['release_date'].split('-')[0]),
-          'month':int(data['release_date'].split('-')[1]),
-          'day':int(data['release_date'].split('-')[2])
+          'year': int(data['release_date'].split('-')[0]),
+          'month': int(data['release_date'].split('-')[1]),
+          'day': int(data['release_date'].split('-')[2])
         }
     else:
         release_date = {
-          'year':int(data['first_air_date'].split('-')[0]),
-          'month':int(data['first_air_date'].split('-')[1]),
-          'day':int(data['first_air_date'].split('-')[2])
+          'year': int(data['first_air_date'].split('-')[0]),
+          'month': int(data['first_air_date'].split('-')[1]),
+          'day': int(data['first_air_date'].split('-')[2])
         }
     # movie_poster = IMAGE_ROOT + POSTER_RESOLUTION + data['poster_path']
 
     # Get movie cast
     # 'https://api.themoviedb.org/3/tv/70523/credits?api_key=f290a6cd7f26e869cf63e412e5b1ec91&language=en-US'
-    query = 'https://api.themoviedb.org/3/' + ('movie/' if is_movie else 'tv/') + my_id + '/credits?api_key=' + API_KEY + LANGUAGE
+    query = 'https://api.themoviedb.org/3/' + ('movie/' if is_movie else 'tv/')
+    query += my_id + '/credits?api_key=' + API_KEY + LANGUAGE
     data = requests.get(query).json()
     cast = data['cast']
 
@@ -61,8 +69,7 @@ def search(movie, media):
             continue
         person_data = requests.get('https://api.themoviedb.org/3/person/' + str(person['id']) + '?api_key=' + API_KEY + LANGUAGE).json()
         if not person_data['birthday'] or not person_data['profile_path']:
-          continue
-        # print(f"Extracting data for {person['character']}")
+            continue
         characters[person['character']] = Person(
           person['name'],
           person_data['birthday'],
