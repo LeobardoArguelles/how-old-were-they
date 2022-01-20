@@ -5,27 +5,32 @@ How old were they?
 {% endblock %}
 
 {% block content %}
-<div class="main-container">
-  <div class="banner box">
-    <h1 class="text-green-500">What are you watching?</h1>
-    <form action="{{ url_for('index') }}" method="POST" id="form-name">
-    <div class="flex container" id="radio-group">
-        <div class="container radio-item">
-          <input type="radio" id="movie" name="watching" value="movie">
-          <label for="movie">  Movie</label>
-        </div>
-        <div class="container radio-item">
-          <input type="radio" id="serie" name="watching" value="serie">
-          <label for="serie">  Serie</label>
-        </div>
-      </div>
-    <div class="flex container">
-        <input type="text" class="search-bar" name="movie" pattern=".*\S.*">
-        <button class="search-btn" type="submit" >
-          <span>Search</span>
-        </button>
+<div class="w-full h-max">
+  <div class="py-2 lg:py-12 max-w-7xl w-full h-screen mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center">
+    <div class="bg-black opacity-80 h-60 lg:h-96 max-w-7xl w-full rounded-xl mx-auto px-4 sm:px-6 lg:px-8 absolute">
     </div>
-    </form>
+    <div class="relative z-10 flex flex-col place-items-center space-y-6">
+      <h1 class="text-white text-3xl md:text-5xl lg:text-7xl font-bold">What are you watching?</h1>
+      <form class="w-full" action="{{ url_for('index') }}" method="POST" id="form-name">
+      <div class="flex flex-row mx-auto justify-center space-x-12 lg:space-x-20 text-white font-semibold" id="radio-group">
+          <div class="flex flex-row items-center space-x-2">
+              <input type="radio" id="movie" name="watching" value="movie">
+              <label for="movie">  Movie</label>
+          </div>
+          <div class="flex flex-row items-center space-x-2">
+              <input type="radio" id="serie" name="watching" value="serie">
+              <label for="serie">  Serie</label>
+          </div>
+        </div>
+      <div class="flex flex-row justify-center w-full space-x-4 mx-auto container">
+          <!-- <input type="text" class="search-bar" name="movie" pattern=".*\S.*"> -->
+          <input id="search" name="movie" class="pl-2 w-3/4 pr-3 py-2 border border-transparent rounded-md leading-5 bg-gray-200 text-gray-300 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-white focus:ring-white focus:text-gray-900 sm:text-sm" placeholder="Buscar..." type="search">
+          <button class="inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" type="submit" >
+            <span>Search</span>
+          </button>
+      </div>
+      </form>
+    </div>
   </div>
 </div>
 {% endblock %}
