@@ -1,7 +1,7 @@
 from flask import Flask, Blueprint, flash,  redirect, render_template, request, url_for
 from flask import render_template
 
-from app import searcher
+from . import searcher
 
 bp = Blueprint('main', __name__)
 
