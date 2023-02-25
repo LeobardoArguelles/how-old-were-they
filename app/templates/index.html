@@ -5,32 +5,60 @@ How old were they?
 {% endblock %}
 
 {% block content %}
-<div class="w-full h-max">
-  <div class="py-2 lg:py-12 max-w-7xl w-full h-screen mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center">
-    <div class="bg-black opacity-90 h-60 lg:h-96 max-w-7xl w-full rounded-xl mx-auto px-4 sm:px-6 lg:px-8 absolute">
-    </div>
-    <div class="relative z-10 flex flex-col place-items-center space-y-6">
-      <h1 class="text-white text-3xl md:text-5xl lg:text-7xl font-bold">What are you watching?</h1>
-      <form class="w-full" action="{{ url_for('index') }}" method="POST" id="form-name">
-      <div class="flex flex-row mx-auto justify-center space-x-12 lg:space-x-20 text-white font-semibold" id="radio-group">
-          <div class="flex flex-row items-center space-x-2">
-              <input type="radio" id="movie" name="watching" value="movie">
-              <label for="movie">  Movie</label>
+<div class="relative">
+  <div class="bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500  h-screen w-screen absolute inset-0 -z-10">
+    <div class="flex flex-col justify-center h-full mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-3xl">
+          <div class="bg-white shadow sm:rounded-lg">
+            <div class="px-4 py-5 sm:p-6">
+              <h3 class="text-base font-semibold leading-6 text-gray-900">What are you watching?</h3>
+              <div class="mt-2 max-w-xl text-sm text-gray-500">
+                <p>Entere the name of the media you are watching, or its IMDB code!</p>
+              </div>
+              <form class="mt-5 sm:flex sm:items-center">
+                <div class="w-full sm:max-w-xs">
+                  <label for="email" class="sr-only">Email</label>
+                  <input type="email" name="email" id="email" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="Dune">
+                </div>
+                <button type="submit" class="mt-3 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Save</button>
+              </form>
+            </div>
           </div>
-          <div class="flex flex-row items-center space-x-2">
-              <input type="radio" id="serie" name="watching" value="serie">
-              <label for="serie">  Serie</label>
-          </div>
+
         </div>
-      <div class="flex flex-row justify-center w-full space-x-4 mx-auto container">
-          <!-- <input type="text" class="search-bar" name="movie" pattern=".*\S.*"> -->
-          <input id="search" name="movie" class="pl-2 w-3/4 pr-3 py-2 border border-transparent rounded-md leading-5 bg-gray-200 text-gray-300 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-white focus:ring-white focus:text-gray-900 sm:text-sm" placeholder="Buscar..." type="search">
-          <button class="inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" type="submit" >
-            <span>Search</span>
-          </button>
       </div>
-      </form>
-    </div>
+
   </div>
 </div>
+
+
+
+<!-- <div class="w-full h-max"> -->
+<!--   <div class="py-2 lg:py-12 max-w-7xl w-full h-screen mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center"> -->
+<!--     <div class="bg-black opacity-90 h-60 lg:h-96 max-w-7xl w-full rounded-xl mx-auto px-4 sm:px-6 lg:px-8 absolute"> -->
+<!--     </div> -->
+<!--     <div class="relative z-10 flex flex-col place-items-center space-y-6"> -->
+<!--       <h1 class="text-white text-3xl md:text-5xl lg:text-7xl font-bold">What are you watching?</h1> -->
+<!--       <form class="w-full" action="{{ url_for('index') }}" method="POST" id="form-name"> -->
+<!--       <div class="flex flex-row mx-auto justify-center space-x-12 lg:space-x-20 text-white font-semibold" id="radio-group"> -->
+<!--           <div class="flex flex-row items-center space-x-2"> -->
+<!--               <input type="radio" id="movie" name="watching" value="movie"> -->
+<!--               <label for="movie">  Movie</label> -->
+<!--           </div> -->
+<!--           <div class="flex flex-row items-center space-x-2"> -->
+<!--               <input type="radio" id="serie" name="watching" value="serie"> -->
+<!--               <label for="serie">  Serie</label> -->
+<!--           </div> -->
+<!--         </div> -->
+<!--       <div class="flex flex-row justify-center w-full space-x-4 mx-auto container"> -->
+<!--           <\!-- <input type="text" class="search-bar" name="movie" pattern=".*\S.*"> -\-> -->
+<!--           <input id="search" name="movie" class="pl-2 w-3/4 pr-3 py-2 border border-transparent rounded-md leading-5 bg-gray-200 text-gray-300 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-white focus:ring-white focus:text-gray-900 sm:text-sm" placeholder="Buscar..." type="search"> -->
+<!--           <button class="inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" type="submit" > -->
+<!--             <span>Search</span> -->
+<!--           </button> -->
+<!--       </div> -->
+<!--       </form> -->
+<!--     </div> -->
+<!--   </div> -->
+<!-- </div> -->
 {% endblock %}
