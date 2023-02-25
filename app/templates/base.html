@@ -11,7 +11,11 @@
     {% for message in get_flashed_messages() %}
     <div class="flash">{{ message }}</div>
     {% endfor %}
+    <div class="relative">
+      <div class="bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500  h-screen w-screen absolute inset-0 -z-10">
     {% block content %}{% endblock %}
+      </div>
+    </div>
     {% block scripts %}{% endblock %}
   </body>
 </html>
