@@ -14,11 +14,24 @@ def index():
     """
     if request.method == 'POST':
         media_type = request.form['watching']
-        title = request.form['movie']
-        persons, real_title = searcher.search(title, media_type)
+        title = request.form['media']
+        options = searcher.search_options(title, media_type)
 
-        if persons is None:
-            # No se encontró la película
-            return render_template('notfound.html', title=title)
-        return render_template('result.html', persons=list(persons.values())[:10], title=real_title, is_movie=True if media_type == "movie" else False)
+        # if persons is None:
+        #     # No se encontró la película
+        #     return render_template('notfound.html', title=title)
+        return render_template('options.html', options=options)
+
     return render_template('index.html')
+
+@bp.route('/search', methods=['POST'])
+def show_data():
+    id = request.form["id"]
+    media_kind = request.form["media"]
+    characters, title = searcher.search(id, media_kind)
+
+    persons = []
+    for char_name, person in characters.items():
+        persons.append(person)
+
+    return render_template('result.html', persons=persons[:5], title=title, is_movie=media_kind=="movie")

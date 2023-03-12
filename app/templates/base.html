@@ -3,13 +3,19 @@
   <head>
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet" media="screen" href="http://fontlibrary.org/face/roboto-condensed" type="text/css"/> 
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/roboto-condensed" type="text/css"/>
+    <script src="{{ url_for('static', filename='js/jquery-3.6.3.min.js') }}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
     {% for message in get_flashed_messages() %}
     <div class="flash">{{ message }}</div>
     {% endfor %}
+    <div class="relative">
+      <div class="bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500  h-screen w-screen absolute inset-0 -z-10">
     {% block content %}{% endblock %}
+      </div>
+    </div>
+    {% block scripts %}{% endblock %}
   </body>
 </html>

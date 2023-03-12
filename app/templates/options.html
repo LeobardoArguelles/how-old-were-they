@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Options
+{% endblock %}
+
+{% block content %}
+<div class="mt-16 rounded-lg text-white">
+  <h1 class="text-center text-3xl font-bold">Which movie are you looking for?</h1>
+  <div class="w-full flex flex-row px-6 md:px-8 lg:px-12 gap-x-6 gap-y-6 pt-12 justify-center flex-wrap">
+    {% for o in options %}
+    <form method="post" action="{{ url_for('show_data') }}">
+      <div class="w-max flex flex-col items-center cursor-pointer" onclick="javascrip:this.parentNode.submit();">
+        <img width="180px" height="270px" src="{{ o.poster }}" alt="{{ o.title }} photo.">
+        <div class="flex flex-col items-center mt-1">
+          <p>{{ o.title }}
+          <p>({{ o.release_year }})
+        </div>
+      </div>
+      <input type="text" name="id" id="id" class="hidden" value={{ o.id }}>
+      <input type="text" name="media" id="media" class="hidden" value={{ o.media_kind }}>
+    </form>
+    {% endfor %}
+
+  </div>
+  <div class="mx-auto mt-8 flex flex-row justify-center">
+    <button type="button" class="inline-flex items-center rounded-md border border-gray px-4 py-3 text-base font-medium shadow-sm hover:bg-pink-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+    See more options
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ml-2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5" />
+    </svg>
+
+  </button>
+  </div>
+</div>
+{% endblock %}
