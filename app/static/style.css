@@ -793,6 +793,18 @@ select {
   height: 1.5rem;
 }
 
+.h-12 {
+  height: 3rem;
+}
+
+.h-20 {
+  height: 5rem;
+}
+
+.h-16 {
+  height: 4rem;
+}
+
 .w-screen {
   width: 100vw;
 }
@@ -817,6 +829,18 @@ select {
 
 .w-6 {
   width: 1.5rem;
+}
+
+.w-12 {
+  width: 3rem;
+}
+
+.w-20 {
+  width: 5rem;
+}
+
+.w-16 {
+  width: 4rem;
 }
 
 .max-w-7xl {
@@ -849,6 +873,10 @@ select {
 
 .flex-wrap {
   flex-wrap: wrap;
+}
+
+.place-content-center {
+  place-content: center;
 }
 
 .place-items-center {
@@ -934,6 +962,10 @@ select {
 
 .rounded-lg {
   border-radius: 0.5rem;
+}
+
+.rounded-full {
+  border-radius: 9999px;
 }
 
 .border {
@@ -1095,6 +1127,16 @@ select {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
 }
 
 .font-semibold {
