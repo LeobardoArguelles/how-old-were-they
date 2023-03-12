@@ -1,5 +1,6 @@
 import requests, datetime
 from decouple import config
+from os import path
 
 NOW = datetime.datetime.now()
 YEAR = NOW.year
@@ -55,7 +56,10 @@ def search_options(target, media):
 
         release_year = option_data[date_field].split('-')[0]
 
-        movie_poster = IMAGE_ROOT + POSTER_RESOLUTION + option_data['poster_path']
+        if option_data['poster_path']:
+            movie_poster = IMAGE_ROOT + POSTER_RESOLUTION + option_data['poster_path']
+        else:
+            movie_poster = path.join('static', 'no-poster.jpg')
 
         option = {
             "id": str(option_data['id']),

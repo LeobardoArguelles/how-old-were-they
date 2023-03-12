@@ -10,7 +10,7 @@ Options
   <div class="w-full flex flex-row px-6 md:px-8 lg:px-12 gap-x-6 gap-y-6 pt-12 justify-center flex-wrap">
     {% for o in options %}
     <form method="post" action="{{ url_for('show_data') }}">
-      <div class="w-max flex flex-col items-center" onclick="javascrip:this.parentNode.submit();">
+      <div class="w-max flex flex-col items-center cursor-pointer" onclick="javascrip:this.parentNode.submit();">
         <img width="180px" height="270px" src="{{ o.poster }}" alt="{{ o.title }} photo.">
         <div class="flex flex-col items-center mt-1">
           <p>{{ o.title }}
