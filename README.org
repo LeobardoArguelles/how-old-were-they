@@ -2,5 +2,5 @@
 This project was created to calculate how old were the lead actors of a given movie / serie when they starred in it.
 
 * TODO
-+ Fix background on mobile, it doesn't cover all the screen
-+ Automatically break long names so that they are not longer than the image width
++ +Fix background on mobile, it doesn't cover all the screen+
++ +Automatically break long names so that they are not longer than the image width+
